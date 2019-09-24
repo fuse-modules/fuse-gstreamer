@@ -1,0 +1,61 @@
+<Extensions Backend="CPlusPlus">
+
+    <Set Condition="ANDROID" GStreamer.Root="@('android':Path)/${ANDROID_ABI}" />
+    <Set Condition="IOS" GStreamer.Root="@(HOME:Env)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework" />
+    <Set Condition="MAC" GStreamer.Root="/Library/Frameworks/GStreamer.framework" />
+    <Set Condition="WIN32" GStreamer.Root="@(GSTREAMER_1_0_ROOT_X86_64:Env:Path)" />
+
+    <Set GStreamer.Bin="@(GStreamer.Root)/bin" />
+    <Set GStreamer.Include="@(GStreamer.Root)/include" />
+    <Set GStreamer.Lib="@(GStreamer.Root)/lib" />
+
+    <Set Condition="ANDROID" STL="c++_shared" />
+
+    <Declare Element="BundleFile" TargetDirectory="@(BundleDirectory)" />
+
+    <Template Name="GStreamer">
+        <Require IncludeDirectory="@(GStreamer.Include)/gstreamer-1.0" />
+        <Require IncludeDirectory="@(GStreamer.Include)/glib-2.0" />
+        <Require IncludeDirectory="@(GStreamer.Lib)/glib-2.0/include" />
+        <Require LinkDirectory="@(GStreamer.Lib)" />
+
+        <CopyFile Condition="ANDROID" BundleFile="fontconfig/fonts/truetype/Ubuntu-R.ttf" />
+        <CopyFile Condition="ANDROID" BundleFile="fontconfig/fonts.conf" />
+        <CopyFile Condition="ANDROID" BundleFile="ssl/certs/ca-certificates.crt" />
+        <CopyFile Condition="ANDROID" JavaFile="org/freedesktop/gstreamer/androidmedia/GstAhcCallback.java" />
+        <CopyFile Condition="ANDROID" JavaFile="org/freedesktop/gstreamer/androidmedia/GstAhsCallback.java" />
+        <CopyFile Condition="ANDROID" JavaFile="org/freedesktop/gstreamer/androidmedia/GstAmcOnFrameAvailableListener.java" />
+        <CopyFile Condition="ANDROID" JavaFile="org/freedesktop/gstreamer/GStreamer.java" />
+
+        <Require Condition="ANDROID" LinkLibrary="@(GStreamer.Lib)/libc++_shared.so" />
+        <Require Condition="ANDROID" SharedLibrary="@(GStreamer.Lib)/libgstreamer_android.so" />
+
+        <Require Condition="APPLE" IncludeDirectory="@(GStreamer.Root)/Headers" />
+        <Require Condition="MAC" LinkDirectory="@(GStreamer.Root)/Libraries" />
+
+        <CopyFile Condition="IOS" HeaderFile="gst_ios_init.h" />
+        <CopyFile Condition="IOS" SourceFile="gst_ios_init.m" />
+        <Require Condition="IOS" Xcode.Framework="@(GStreamer.Root)" />
+        <Require Condition="IOS" Xcode.Framework="AssetsLibrary" />
+        <Require Condition="IOS" Xcode.Framework="VideoToolbox" />
+        <Require Condition="IOS" LinkLibrary="iconv" />
+        <Require Condition="IOS" LinkLibrary="resolv" />
+
+        <Require Condition="NATIVE" LinkLibrary="glib-2.0" />
+        <Require Condition="NATIVE" LinkLibrary="gobject-2.0" />
+        <Require Condition="NATIVE" LinkLibrary="gstreamer-1.0" />
+
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libgstreamer-1.0-0.dll" />
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libgmodule-2.0-0.dll" />
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libglib-2.0-0.dll" />
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libgobject-2.0-0.dll" />
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libintl-8.dll" />
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libwinpthread-1.dll" />
+        <Require Condition="WIN32" SharedLibrary="@(GStreamer.Bin)/libffi-7.dll" />
+
+        <Require Condition="LINUX" IncludeDirectory="/usr/include/glib-2.0" />
+        <Require Condition="LINUX" IncludeDirectory="/usr/include/gstreamer-1.0" />
+        <Require Condition="LINUX" IncludeDirectory="/usr/lib/x86_64-linux-gnu/glib-2.0/include" />
+    </Template>
+
+</Extensions>

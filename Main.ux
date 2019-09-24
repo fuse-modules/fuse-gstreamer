@@ -1,0 +1,20 @@
+<App ux:AutoCtor="false"
+        xmlns:g="GStreamer.Controls" >
+
+    <!-- Video player -->
+    <g:Player ux:Name="player"
+              Uri="rtsp://b1.dnsdojo.com:1935/live/sys3.stream">
+        <Text Value="{Property player.Status}"
+              TextAlignment="Center" Alignment="Center"
+              Color="#EEE" />
+    </g:Player>
+
+    <!-- Background effect -->
+    <Rectangle ux:Name="background">
+        <WhileTrue Value="{Property player.IsPlaying}">
+            <Change background.Visibility="Hidden" />
+        </WhileTrue>
+        <g:BackgroundEffect />
+    </Rectangle>
+
+</App>
