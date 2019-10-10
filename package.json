@@ -20,7 +20,11 @@
   ],
   "scripts": {
     "build": "uno doctor GStreamer.unoproj",
-    "prepack": "bash -c 'uno doctor GStreamer.unoproj -c Release -n $npm_package_version'"
+    "prepack": "bash -c 'uno doctor GStreamer.unoproj -c Release -n $npm_package_version'",
+    "android": "uno build android example --run",
+    "ios": "uno build ios example --run",
+    "native": "uno build native example --run",
+    "clean": "uno clean example . -v"
   },
   "repository": {
     "type": "git",

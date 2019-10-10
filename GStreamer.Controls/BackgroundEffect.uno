@@ -11,7 +11,7 @@ using Fuse.Drawing.Planar;
 
 namespace GStreamer.Controls
 {
-    class BackgroundEffect : Fuse.Controls.Graphics.Visual
+    public class BackgroundEffect : Fuse.Controls.Graphics.Visual
     {
         static readonly float3 Color1 = Uno.Color.Parse("#1d3042").XYZ;
         static readonly float3 Color2 = Uno.Color.Parse("#5e8e8e").XYZ * .75f;
