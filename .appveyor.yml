@@ -1,0 +1,33 @@
+version: '{build}'
+image: Visual Studio 2017
+
+environment:
+  # Get stack traces from Uno
+  LOG_TRACE: 1
+  # Add uno command to PATH
+  PATH: node_modules/.bin;%PATH%
+  # Disable Gradle Daemon (Android builder)
+  GRADLE_OPTS: -Dorg.gradle.daemon=false
+
+install:
+  # Install GStreamer
+  - curl -L -s https://gstreamer.freedesktop.org/data/pkg/windows/1.16.0/gstreamer-1.0-devel-mingw-x86_64-1.16.0.msi -o gstreamer-1.0-devel.msi
+  - curl -L -s https://gstreamer.freedesktop.org/data/pkg/windows/1.16.0/gstreamer-1.0-mingw-x86_64-1.16.0.msi -o gstreamer-1.0.msi
+  - msiexec.exe /i gstreamer-1.0-devel.msi /QN
+  - msiexec.exe /i gstreamer-1.0.msi /QN
+  - set GSTREAMER_1_0_ROOT_X86_64=C:\gstreamer\1.0\x86_64\
+  # Install Fuse SDK
+  - npm install android-build-tools -g
+  - npm install
+
+build_script:
+  # Build NPM package
+  - npm pack
+
+artifacts:
+  - path: '*.tgz'
+
+test_script:
+  # Build example app for Android and Windows
+  - uno build android example
+  - uno build native example
