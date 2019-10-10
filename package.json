@@ -1,0 +1,35 @@
+{
+  "name": "fuse-gstreamer",
+  "version": "1.0.0",
+  "description": "GStreamer package for Fuse Open.",
+  "devDependencies": {
+    "@fuse-open/fuselibs": "https://ci.appveyor.com/api/buildjobs/5a42hivoxrxeu4uf/artifacts/fuse-open-fuselibs-1.12.0.tgz",
+    "@fuse-open/uno": "https://ci.appveyor.com/api/buildjobs/knwrfoctwgi5ttex/artifacts/fuse-open-uno-1.12.3.tgz"
+  },
+  "keywords": [
+    "uno",
+    "fuse",
+    "gstreamer",
+    "video",
+    "live-streaming",
+    "rtsp"
+  ],
+  "files": [
+    "build/GStreamer/*",
+    ".unoconfig"
+  ],
+  "scripts": {
+    "build": "uno doctor GStreamer.unoproj",
+    "prepack": "bash -c 'uno doctor GStreamer.unoproj -c Release -n $npm_package_version'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mortend/fuse-gstreamer.git"
+  },
+  "author": "Morten Daniel Fornes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mortend/fuse-gstreamer/issues"
+  },
+  "homepage": "https://github.com/mortend/fuse-gstreamer#readme"
+}
