@@ -7,7 +7,7 @@
 
 [GStreamer] package for [Fuse Open].
 
-GStreamer supports a wide variety of media-handling components, including simple audio playback, audio and video playback, recording, streaming and editing. The pipeline design serves as a base to create many types of multimedia applications such as video editors, transcoders, streaming media broadcasters and media players.
+> GStreamer supports a wide variety of media-handling components, including simple audio playback, audio and video playback, recording, streaming and editing. The pipeline design serves as a base to create many types of multimedia applications such as video editors, transcoders, streaming media broadcasters and media players.
 
 [GStreamer]: https://gstreamer.freedesktop.org/
 [Fuse Open]: https://fuseopen.com/
@@ -18,13 +18,13 @@ GStreamer supports a wide variety of media-handling components, including simple
 npm install fuse-gstreamer
 ```
 
-This will install the `GStreamer` library for use with [Fuse SDK](https://www.npmjs.com/package/fuse-sdk).
+This will install the `GStreamer` library for [Fuse SDK](https://www.npmjs.com/package/fuse-sdk).
 
 ### Requirements
 
 ![Supported platforms](https://img.shields.io/badge/supported%20platforms-Android%20%7C%20iOS%20%7C%20macOS%20%7C%20Linux%20%7C%20Windows-blue?style=flat-square)
 
-Development and runtime files for GStreamer for applicable platforms must be installed on your system to use this package. More information can be found on [this page](https://gstreamer.freedesktop.org/download/).
+GStreamer development and runtime files for desired platforms must be installed on your system to use this package. More information can be found on [this page](https://gstreamer.freedesktop.org/download/).
 
 * On Android, dependencies are downloaded automatically when building, so you don't need to install anything manually.
 
@@ -34,17 +34,15 @@ Development and runtime files for GStreamer for applicable platforms must be ins
 
 ## Usage
 
-`Main.ux`
-
 ```xml
-<App xmlns:g="GStreamer.Controls" >
-    <g:Player Uri="rtsp://b1.dnsdojo.com:1935/live/sys3.stream" />
+<App xmlns:gst="GStreamer.Controls" >
+    <gst:Player Uri="rtsp://b1.dnsdojo.com:1935/live/sys3.stream" />
 </App>
 ```
 
-This instantiates a GStreamer control that is playing a live video stream over RTSP. Different transport protocols, media containers and codecs are supported out-of-the-box.
+This instantiates a GStreamer control playing a live video stream over RTSP. Many common transport protocols, container formats and media codecs are supported out-of-the-box.
 
-To use this control in your project, you must add `GStreamer` under `Packages` in your `.unoproj` file.
+To use this control in your project, you must add `"GStreamer"` to `"Packages"` in your `.unoproj` file.
 
 ### Example app
 
@@ -59,7 +57,7 @@ npm install
 npm run build
 ```
 
-Then, issue one of the following commands to run the example on your desired platform.
+Then, issue one of the following commands to run the app on your desired platform.
 
 ```shell
 npm run android
@@ -71,7 +69,7 @@ npm run native
 
 Check out the files under [`GStreamer/`](GStreamer/) to see how GStreamer is used from Uno, most notably [`UriPipeline.uno`](GStreamer/UriPipeline.uno).
 
-Check out [`Player.uno`](GStreamer.Controls/Player.uno) to see how this stuff is wrapped up as the UX control we're using in our example.
+Check out [`Player.uno`](GStreamer.Controls/Player.uno) to see how this stuff is wrapped up into the UX control we're using in our example app.
 
 If you add some cool functionality, remember that pull requests are very welcome. :-)
 
