@@ -2,7 +2,7 @@ using Uno;
 
 namespace GStreamer
 {
-    class PipelineException : Exception
+    public class PipelineException : Exception
     {
         public PipelineException(string msg)
             : base(msg)
@@ -16,7 +16,7 @@ namespace GStreamer
         }
     }
 
-    class UnsupportedFormatException : PipelineException
+    public class UnsupportedFormatException : PipelineException
     {
         public UnsupportedFormatException(string format)
             : base("Unsupported video format: " + format)
@@ -24,7 +24,7 @@ namespace GStreamer
         }
     }
 
-    class EndOfStreamException : PipelineException
+    public class EndOfStreamException : PipelineException
     {
         public EndOfStreamException()
             : base("Reached end of stream.")

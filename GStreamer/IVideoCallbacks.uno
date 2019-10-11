@@ -2,7 +2,7 @@ using Uno;
 
 namespace GStreamer
 {
-    interface IVideoCallbacks
+    public interface IVideoCallbacks
     {
         void OnFrameAvailable();
         void OnReady();

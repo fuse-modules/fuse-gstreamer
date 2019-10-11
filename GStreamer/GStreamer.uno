@@ -4,50 +4,50 @@ namespace GStreamer
 {
     [TargetSpecificType]
     [Set("TypeName", "const char*")]
-    extern(CPLUSPLUS) struct ConstCharPtr {}
+    extern(CPLUSPLUS) public struct ConstCharPtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "gboolean")]
-    extern(CPLUSPLUS) struct gboolean {}
+    extern(CPLUSPLUS) public struct gboolean {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GMainLoop*")]
-    extern(CPLUSPLUS) struct GMainLoopPtr {}
+    extern(CPLUSPLUS) public struct GMainLoopPtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GstBuffer*")]
-    extern(CPLUSPLUS) struct GstBufferPtr {}
+    extern(CPLUSPLUS) public struct GstBufferPtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GstBus*")]
-    extern(CPLUSPLUS) struct GstBusPtr {}
+    extern(CPLUSPLUS) public struct GstBusPtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GstElement*")]
-    extern(CPLUSPLUS) struct GstElementPtr {}
+    extern(CPLUSPLUS) public struct GstElementPtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GstMessage*")]
-    extern(CPLUSPLUS) struct GstMessagePtr {}
+    extern(CPLUSPLUS) public struct GstMessagePtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GstPad*")]
-    extern(CPLUSPLUS) struct GstPadPtr {}
+    extern(CPLUSPLUS) public struct GstPadPtr {}
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GstStructure*")]
-    extern(CPLUSPLUS) struct GstStructurePtr {}
+    extern(CPLUSPLUS) public struct GstStructurePtr {}
 
     [Require("Template", "GStreamer")]
-    extern(CPLUSPLUS) class GStreamer
+    extern(CPLUSPLUS) public class GStreamer
     {
         [Require("Source.Include", "gst/gst.h")]
         [extern(IOS) Require("Source.Include", "gst_ios_init.h")]

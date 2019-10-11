@@ -6,7 +6,8 @@ using Uno.Threading;
 
 namespace GStreamer
 {
-    extern(CPLUSPLUS) class UriPipeline : GStreamer, IVideoPipeline
+    extern(CPLUSPLUS)
+    public class UriPipeline : GStreamer, IVideoPipeline
     {
         const int FramebufferCount = 2;
 
