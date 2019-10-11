@@ -49,6 +49,12 @@ namespace GStreamer
     [Require("Template", "GStreamer")]
     extern(CPLUSPLUS) public class GStreamer
     {
+        public static void Init()
+        {
+            // Referencing this method will invoke the static ctor,
+            // which will initialize GStreamer.
+        }
+
         [Require("Source.Include", "gst/gst.h")]
         [extern(IOS) Require("Source.Include", "gst_ios_init.h")]
         [extern(WIN32) Require("Source.Include", "Uno/WinAPIHelper.h")]

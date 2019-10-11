@@ -67,6 +67,12 @@ npm run native
 
 ### Custom pipelines
 
+Essentially, make sure to initialize GStreamer in Uno, then write GStreamer code to do what you want...
+
+```uno
+GStreamer.Init();
+```
+
 Check out the files under [`GStreamer/`](GStreamer/) to see how GStreamer is used from Uno, most notably [`UriPipeline.uno`](GStreamer/UriPipeline.uno).
 
 Check out [`Player.uno`](GStreamer.Controls/Player.uno) to see how this stuff is wrapped up into the UX control we're using in our example app.
