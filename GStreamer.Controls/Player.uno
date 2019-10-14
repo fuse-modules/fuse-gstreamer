@@ -94,12 +94,20 @@ namespace GStreamer.Controls
 
             protected override void Attach()
             {
+                Control.AddPropertyListener(this);
                 PlayUri(Control.Uri);
             }
 
             protected override void Detach()
             {
+                Control.RemovePropertyListener(this);
                 Clear();
+            }
+
+            public override void OnPropertyChanged(PropertyObject obj, Selector property)
+            {
+                if (property == UriSelector)
+                    PlayUri(Control.Uri);
             }
 
             internal void PlayUri(string uri)
