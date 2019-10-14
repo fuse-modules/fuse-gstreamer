@@ -59,9 +59,14 @@ namespace GStreamer.Controls
                 if (_uri == value)
                     return;
 
-                _uri = value;
-                OnPropertyChanged(UriSelector, this);
+                PlayUri(value);
             }
+        }
+
+        public void PlayUri(string value)
+        {
+            _uri = value;
+            OnPropertyChanged(UriSelector, this);
         }
 
         public void Stop()
