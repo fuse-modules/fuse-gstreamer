@@ -159,13 +159,6 @@ namespace GStreamer
             g_value_init(&val, G_TYPE_INT);
             g_value_set_int(&val, latency);
             g_object_set_property(G_OBJECT($1), "latency", &val);
-
-            // Don't try to reconnect a closed stream and avoid SIGSEGV on Android
-            gboolean udp_reconnect = FALSE;
-            GValue udp_reconnect_val = G_VALUE_INIT;
-            g_value_init(&udp_reconnect_val, G_TYPE_BOOLEAN);
-            g_value_set_boolean(&udp_reconnect_val, udp_reconnect);
-            g_object_set_property(G_OBJECT($1), "udp-reconnect", &udp_reconnect_val);
         @}
 
         static void OnPadAdded(GstElementPtr element, GstPadPtr pad, UriPipeline p)
