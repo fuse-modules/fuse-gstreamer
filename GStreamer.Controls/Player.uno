@@ -134,7 +134,7 @@ namespace GStreamer.Controls
                     }
                     else
                     {
-                        throw new NotSupportedException("GStreamer is not available on this platform");
+                        throw new NotSupportedException("GStreamer is not available on this platform.");
                     }
                 }
                 catch (Exception e)
@@ -172,7 +172,7 @@ namespace GStreamer.Controls
 
             void OnError(Exception e)
             {
-                Clear(e.Message);
+                Clear("Error: " + e.Message);
                 BusyTask.SetBusy(Control, ref _busyTask, BusyTaskActivity.Failed, e.Message);
                 Fuse.Diagnostics.UnknownException("Player", e, this);
             }

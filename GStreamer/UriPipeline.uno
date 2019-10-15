@@ -104,16 +104,16 @@ namespace GStreamer
             if (error)
             {
                 U_ERROR(error->message);
-                U_THROW_IOE("GStreamer: Failed to create the pipeline");
+                U_THROW_IOE("GStreamer: Failed to create the pipeline.");
             }
 
             @{$$._decodebin} = gst_bin_get_by_name(GST_BIN(@{$$._pipeline}), "decodebin");
             @{$$._videosink} = gst_bin_get_by_name(GST_BIN(@{$$._pipeline}), "videosink");
 
             if (!@{$$._decodebin})
-                U_THROW_IOE("GStreamer: The 'decodebin' element is missing");
+                U_THROW_IOE("GStreamer: The 'decodebin' element is missing.");
             if (!@{$$._videosink})
-                U_THROW_IOE("GStreamer: The 'fakesink' element is missing");
+                U_THROW_IOE("GStreamer: The 'fakesink' element is missing.");
 
             g_object_set(G_OBJECT(@{$$._decodebin}), "uri", uCString($0).Ptr, NULL);
 
@@ -133,7 +133,7 @@ namespace GStreamer
                 GstMessage* msg = gst_bus_pop_filtered(@{$$._bus}, GST_MESSAGE_ERROR);
 
                 if (!msg)
-                    U_THROW_IOE("GStreamer: Failed to start the pipeline");
+                    U_THROW_IOE("GStreamer: Failed to start the pipeline.");
 
                 @{OnError(GstMessagePtr,UriPipeline):Call(msg, $$)};
                 gst_message_unref(msg);
