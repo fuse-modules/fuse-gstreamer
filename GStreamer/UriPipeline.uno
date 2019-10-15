@@ -130,8 +130,13 @@ namespace GStreamer
             if (GST_STATE_CHANGE_FAILURE ==
                 gst_element_set_state(GST_ELEMENT(@{$$._pipeline}), GST_STATE_PLAYING))
             {
-                //@{OnError(GstMessagePtr,UriPipeline):Call(gst_bus_poll(@{$$._bus}, GST_MESSAGE_ERROR, 0), $$)};
-                U_THROW_IOE("GStreamer: Failed to start the pipeline");
+                GstMessage* msg = gst_bus_pop_filtered(@{$$._bus}, GST_MESSAGE_ERROR);
+
+                if (!msg)
+                    U_THROW_IOE("GStreamer: Failed to start the pipeline");
+
+                @{OnError(GstMessagePtr,UriPipeline):Call(msg, $$)};
+                gst_message_unref(msg);
             }
         @}
 
