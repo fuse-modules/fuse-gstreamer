@@ -40,7 +40,7 @@ GStreamer development and runtime files for desired platforms must be installed 
 </App>
 ```
 
-This instantiates a GStreamer control playing a live video stream over RTSP. Many common transport protocols, container formats and media codecs are supported out-of-the-box.
+This instantiates a GStreamer control playing a live video stream over RTSP. Many common transport protocols, container formats and media codecs are supported out-of-the-box. If you want to play local files, provide a `file:///` URI instead.
 
 To use this control in your project, you must add `"GStreamer"` to `"Packages"` in your `.unoproj` file.
 
