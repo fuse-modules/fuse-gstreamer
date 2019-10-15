@@ -13,6 +13,11 @@ namespace GStreamer
 
     [TargetSpecificType]
     [Set("Include", "gst/gst.h")]
+    [Set("TypeName", "guint")]
+    extern(CPLUSPLUS) public struct guint {}
+
+    [TargetSpecificType]
+    [Set("Include", "gst/gst.h")]
     [Set("TypeName", "GMainLoop*")]
     extern(CPLUSPLUS) public struct GMainLoopPtr {}
 

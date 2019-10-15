@@ -20,6 +20,7 @@ namespace GStreamer
         GstElementPtr _decodebin;
         GstElementPtr _videosink;
         GstBusPtr _bus;
+        guint _bus_watch_id;
 
         Exception _error;
 
@@ -123,7 +124,7 @@ namespace GStreamer
             g_signal_connect(@{$$._decodebin}, "pad-added", G_CALLBACK(@{OnPadAdded(GstElementPtr,GstPadPtr,UriPipeline)}), $$);
 
             @{$$._bus} = gst_pipeline_get_bus(GST_PIPELINE(@{$$._pipeline}));
-            gst_bus_add_watch(@{$$._bus}, (GstBusFunc) @{OnBusCall(GstBusPtr,GstMessagePtr,UriPipeline)}, $$);
+            @{$$._bus_watch_id} = gst_bus_add_watch(@{$$._bus}, (GstBusFunc) @{OnBusCall(GstBusPtr,GstMessagePtr,UriPipeline)}, $$);
 
             // Start the pipeline
             if (GST_STATE_CHANGE_FAILURE ==
@@ -149,6 +150,7 @@ namespace GStreamer
         @{
             gst_object_unref(@{$$._bus});
             gst_object_unref(@{$$._pipeline});
+            g_source_remove(@{$$._bus_watch_id});
         @}
 
         static void OnSourceSetup(GstElementPtr pipeline, GstElementPtr source, UriPipeline p)
