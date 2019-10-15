@@ -151,6 +151,7 @@ namespace GStreamer
             gst_object_unref(@{$$._bus});
             gst_object_unref(@{$$._pipeline});
             g_source_remove(@{$$._bus_watch_id});
+            g_main_loop_unref(@{$$._loop});
         @}
 
         static void OnSourceSetup(GstElementPtr pipeline, GstElementPtr source, UriPipeline p)
