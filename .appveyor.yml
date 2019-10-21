@@ -2,6 +2,8 @@ version: '{build}'
 image: Visual Studio 2017
 
 environment:
+  # Get verbose logs from Uno
+  LOG_LEVEL: 1
   # Get stack traces from Uno
   LOG_TRACE: 1
   # Disable Gradle Daemon (Android builder)
