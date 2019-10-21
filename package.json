@@ -3,7 +3,8 @@
   "version": "1.0.0-rc.2",
   "description": "GStreamer package for Fuse Open.",
   "devDependencies": {
-    "fuse-sdk": "^1.13.0"
+    "fuse-sdk": "^1.13.0",
+    "xbash": "^1.3.0"
   },
   "keywords": [
     "uno",
@@ -19,7 +20,7 @@
   ],
   "scripts": {
     "build": "uno doctor GStreamer.unoproj",
-    "prepack": "bash -c 'uno doctor GStreamer.unoproj -c Release -n $npm_package_version'",
+    "prepack": "xbash -c 'uno doctor GStreamer.unoproj -c Release -n $npm_package_version'",
     "android": "uno build android example --run",
     "ios": "uno build ios example --run",
     "native": "uno build native example --run",
