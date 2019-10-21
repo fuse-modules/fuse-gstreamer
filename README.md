@@ -35,7 +35,7 @@ GStreamer development and runtime files for desired platforms must be installed 
 ## Usage
 
 ```xml
-<App xmlns:gst="GStreamer.Controls" >
+<App xmlns:gst="GStreamer.Controls">
     <gst:Player Uri="rtsp://b1.dnsdojo.com:1935/live/sys3.stream" />
 </App>
 ```

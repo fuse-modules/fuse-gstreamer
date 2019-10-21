@@ -1,5 +1,4 @@
-<App ux:AutoCtor="false"
-     xmlns:gst="GStreamer.Controls" >
+<App ux:AutoCtor="false" xmlns:gst="GStreamer.Controls">
 
     <!-- Video player -->
     <gst:Player ux:Name="player"
