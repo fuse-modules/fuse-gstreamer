@@ -30,7 +30,16 @@ partial class Main
         elements.Sort(string.Compare);
 
         debug_log "\nAvailable GST elements:";
-        debug_log string.Join(", ", elements.ToArray());
+
+        var str = string.Join(", ", elements.ToArray());
+        const int limit = 100;
+
+        // Hard-wrap at {limit} chars to please Android logcat.
+        for (int i = 0; i < str.Length; i += limit)
+            debug_log i + limit < str.Length
+                ? str.Substring(i, limit)
+                : str.Substring(i) + ".";
+
         debug_log "";
     }
 }
