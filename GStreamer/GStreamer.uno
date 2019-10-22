@@ -1,3 +1,4 @@
+using Uno.Collections;
 using Uno.Compiler.ExportTargetInterop;
 
 namespace GStreamer
@@ -108,6 +109,41 @@ namespace GStreamer
             } catch (Exception e) {
                 android.util.Log.e("GStreamer.init()", e.getMessage());
             }
+        @}
+
+        [Require("Source.Include", "gst/gstregistry.h")]
+        public static void GetPlugins(List<string> result)
+        @{
+            GList* plugins = gst_registry_get_plugin_list(gst_registry_get());
+
+            for (GList* it = plugins; it; it = g_list_next(it))
+            {
+                GstPlugin* plugin = (GstPlugin*)it->data;
+                @{$0.Add(string):Call(uString::Utf8(gst_plugin_get_name(plugin)))};
+            }
+
+            gst_plugin_list_free(plugins);
+        @}
+
+        [Require("Source.Include", "gst/gstregistry.h")]
+        public static void GetElements(string plugin, List<string> result)
+        @{
+            GList* features = gst_registry_get_feature_list_by_plugin(gst_registry_get(), uCString($0).Ptr);
+
+            for (GList* it = features; it; it = g_list_next(it))
+            {
+                if (!it->data)
+                    continue;
+
+                GstPluginFeature* feature = GST_PLUGIN_FEATURE(it->data);
+                if (!GST_IS_ELEMENT_FACTORY(feature))
+                    continue;
+
+                GstElementFactory* factory = GST_ELEMENT_FACTORY(gst_plugin_feature_load(feature));
+                @{$1.Add(string):Call(uString::Utf8(gst_plugin_feature_get_name(factory)))};
+            }
+
+            gst_plugin_feature_list_free(features);
         @}
     }
 }
