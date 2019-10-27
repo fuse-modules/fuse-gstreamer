@@ -1,19 +1,19 @@
-<App ux:AutoCtor="false" xmlns:gst="GStreamer.Controls">
+<App Background="#000" ux:AutoCtor="false" xmlns:gst="GStreamer.Controls">
+    <ClientPanel>
+        <!-- Video player -->
+        <gst:Player ux:Name="player"
+                    Uri="rtsp://b1.dnsdojo.com:1935/live/sys3.stream">
+            <Text Value="{Property player.Status}"
+                TextAlignment="Center" Alignment="Center"
+                Color="#EEE" />
+        </gst:Player>
 
-    <!-- Video player -->
-    <gst:Player ux:Name="player"
-                Uri="rtsp://b1.dnsdojo.com:1935/live/sys3.stream">
-        <Text Value="{Property player.Status}"
-              TextAlignment="Center" Alignment="Center"
-              Color="#EEE" />
-    </gst:Player>
-
-    <!-- Background effect -->
-    <Rectangle ux:Name="background">
-        <WhileTrue Value="{Property player.IsPlaying}">
-            <Change background.Visibility="Hidden" />
-        </WhileTrue>
-        <gst:BackgroundEffect />
-    </Rectangle>
-
+        <!-- Background effect -->
+        <Rectangle ux:Name="background">
+            <WhileTrue Value="{Property player.IsPlaying}">
+                <Change background.Visibility="Hidden" />
+            </WhileTrue>
+            <gst:BackgroundEffect />
+        </Rectangle>
+    </ClientPanel>
 </App>
