@@ -159,7 +159,7 @@ namespace GStreamer
             g_main_loop_unref(@{$$._loop});
         @}
 
-        static void OnSourceSetup(GstElementPtr pipeline, GstElementPtr source, UriPipeline p)
+        static void OnSourceSetup(GstElementPtr pipeline, GstElementPtr source, UriPipeline pipe)
         @{
             // Reduce latency
             gint latency = 0;
@@ -169,7 +169,7 @@ namespace GStreamer
             g_object_set_property(G_OBJECT($1), "latency", &val);
         @}
 
-        static void OnPadAdded(GstElementPtr element, GstPadPtr pad, UriPipeline p)
+        static void OnPadAdded(GstElementPtr element, GstPadPtr pad, UriPipeline pipe)
         @{
             GstCaps* caps = gst_pad_get_current_caps($1);
             GstStructure* str = gst_caps_get_structure(caps, 0);
@@ -198,7 +198,7 @@ namespace GStreamer
             gst_caps_unref(caps);
         @}
 
-        static void OnBufferData(GstElementPtr element, GstBufferPtr buf, GstPadPtr pad, UriPipeline p)
+        static void OnBufferData(GstElementPtr element, GstBufferPtr buf, GstPadPtr pad, UriPipeline pipe)
         @{
             if (!@{$3._format})
             {
@@ -238,7 +238,7 @@ namespace GStreamer
         @}
 
         [Require("Source.Include", "@{EndOfStreamException:Include}")]
-        static gboolean OnBusCall(GstBusPtr bus, GstMessagePtr msg, UriPipeline p)
+        static gboolean OnBusCall(GstBusPtr bus, GstMessagePtr msg, UriPipeline pipe)
         @{
             switch (GST_MESSAGE_TYPE($1))
             {
@@ -260,7 +260,7 @@ namespace GStreamer
             return TRUE;
         @}
 
-        static void OnError(GstMessagePtr msg, UriPipeline p)
+        static void OnError(GstMessagePtr msg, UriPipeline pipe)
         @{
             if (!$0)
                 return;
@@ -283,7 +283,7 @@ namespace GStreamer
             }
         @}
 
-        static void OnWarning(GstMessagePtr msg, UriPipeline p)
+        static void OnWarning(GstMessagePtr msg, UriPipeline pipe)
         @{
             GError* err = NULL;
             gchar* debug = NULL;
