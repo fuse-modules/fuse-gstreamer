@@ -124,11 +124,10 @@ namespace GStreamer
             g_signal_connect(@{$$._decodebin}, "pad-added", G_CALLBACK(@{OnPadAdded(GstElementPtr,GstPadPtr,UriPipeline)}), $$);
 
             @{$$._bus} = gst_pipeline_get_bus(GST_PIPELINE(@{$$._pipeline}));
-            @{$$._bus_watch_id} = gst_bus_add_watch(@{$$._bus}, (GstBusFunc) @{OnBusCall(GstBusPtr,GstMessagePtr,UriPipeline)}, $$);
+            @{$$._bus_watch_id} = gst_bus_add_watch(@{$$._bus}, (GstBusFunc)@{OnBusCall(GstBusPtr,GstMessagePtr,UriPipeline)}, $$);
 
             // Start the pipeline
-            if (GST_STATE_CHANGE_FAILURE ==
-                gst_element_set_state(GST_ELEMENT(@{$$._pipeline}), GST_STATE_PLAYING))
+            if (!gst_element_set_state(@{$$._pipeline}, GST_STATE_PLAYING))
             {
                 GstMessage* msg = gst_bus_pop_filtered(@{$$._bus}, GST_MESSAGE_ERROR);
 
@@ -147,7 +146,7 @@ namespace GStreamer
 
         void Stop()
         @{
-            gst_element_set_state(GST_ELEMENT(@{$$._pipeline}), GST_STATE_NULL);
+            gst_element_set_state(@{$$._pipeline}, GST_STATE_NULL);
             g_main_loop_quit(@{$$._loop});
         @}
 
