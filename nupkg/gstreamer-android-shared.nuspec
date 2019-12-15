@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>gstreamer-android-shared</id>
+    <version>1.16.2</version>
+    <authors>mortend</authors>
+    <owners>mortend</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://gstreamer.freedesktop.org/documentation/licensing.html</licenseUrl>
+    <projectUrl>https://gstreamer.freedesktop.org/</projectUrl>
+    <description>Header files and shared library build of GStreamer for Android (arm64-v8a, armeabi-v7a, x86, x86_64). Includes GSTREAMER_PLUGINS_CORE, GSTREAMER_PLUGINS_PLAYBACK, GSTREAMER_PLUGINS_CODECS GSTREAMER_PLUGINS_NET, GSTREAMER_PLUGINS_SYS, GSTREAMER_PLUGINS_CODECS_RESTRICTED, GSTREAMER_PLUGINS_ENCODING, GSTREAMER_PLUGINS_CAPTURE, GSTREAMER_PLUGINS_EFFECTS, and gstreamer-pbutils-1.0.</description>
+    <copyright>Copyright 2019</copyright>
+  </metadata>
+  <files>
+    <file src="arm64\include\**\*.h" target="arm64-v8a\include" />
+    <file src="arm64\lib\**\*.h" target="arm64-v8a\lib" />
+    <file src="arm64\lib\**\*.so" target="arm64-v8a\lib" />
+    <file src="armv7\include\**\*.h" target="armeabi-v7a\include" />
+    <file src="armv7\lib\**\*.h" target="armeabi-v7a\lib" />
+    <file src="armv7\lib\**\*.so" target="armeabi-v7a\lib" />
+    <file src="x86\include\**\*.h" target="x86\include" />
+    <file src="x86\lib\**\*.h" target="x86\lib" />
+    <file src="x86\lib\**\*.so" target="x86\lib" />
+    <file src="x86_64\include\**\*.h" target="x86_64\include" />
+    <file src="x86_64\lib\**\*.h" target="x86_64\lib" />
+    <file src="x86_64\lib\**\*.so" target="x86_64\lib" />
+  </files>
+</package>
