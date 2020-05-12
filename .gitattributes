@@ -1,1 +1,6 @@
 * text=auto
+
+# Mark vendored code.
+GStreamer/gst_ios_init.h                linguist-vendored
+GStreamer/gst_ios_init.m                linguist-vendored
+GStreamer/org/freedesktop/gstreamer/**  linguist-vendored
