@@ -1,3 +1,0 @@
-if ANDROID {
-    android: "https://www.nuget.org/api/v2/package/gstreamer-android-shared/1.16.0"
-}
