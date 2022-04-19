@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "GStreamer package for Fuse Open.",
   "devDependencies": {
-    "fuse-sdk": "^2.0.0-beta.2"
+    "fuse-sdk": "^2.1.1"
   },
   "keywords": [
     "uno",
